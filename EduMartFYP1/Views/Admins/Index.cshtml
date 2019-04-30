@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EduMartFYP1.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.adminusername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adminpassword)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.adminusername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adminpassword)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.adminid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.adminid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.adminid })
+        </td>
+    </tr>
+}
+
+</table>

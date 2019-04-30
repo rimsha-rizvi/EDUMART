@@ -1,0 +1,26 @@
+﻿@model EduMartFYP1.Quota
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Quota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuotaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuotaName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuotaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

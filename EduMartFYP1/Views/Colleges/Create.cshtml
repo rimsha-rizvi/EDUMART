@@ -1,0 +1,71 @@
+﻿@model EduMartFYP1.College
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<div class="login-w3ls py-5">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">
+            register
+            <span class="font-weight-bold">now</span>
+        </h3>
+        <!-- content -->
+        <div class="sub-main-w3 pt-md-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-style-agile form-group">
+                    <label>
+                        College
+                        <i class="fas fa-user"></i>
+                    </label>
+                    @Html.EditorFor(model => model.CollegeName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CollegeName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-style-agile form-group">
+                    <label>
+                        College Address
+                        <i class="fas fa-address-book"></i>
+                    </label>
+                    @Html.EditorFor(model => model.CollegeAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CollegeAddress, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-style-agile form-group">
+                    <label>
+                        College Contact
+                        <i class="fas fa-mobile-alt"></i>
+                    </label>
+                    @Html.EditorFor(model => model.CollegeContact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CollegeContact, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-style-agile form-group">
+                    <label>
+                        College Email
+                        <i class="fas fa-envelope"></i>
+                    </label>
+                    @Html.EditorFor(model => model.CollegeEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CollegeEmail, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-style-agile form-group">
+                    <label>
+                        College Password
+                        <i class="fas fa-unlock-alt"></i>
+                    </label>
+
+                    @Html.PasswordFor(model => model.CollegePassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CollegePassword, "", new { @class = "text-danger" })
+                </div>
+                <input type="submit" value="Register">
+                <p class="text-center dont-do mt-4 text-white">
+                    Already have an account?
+                    @Html.ActionLink("Login", "Login", "CollegeLogin", new object { }, new { @class = "text-white  font-weight-bold" })
+                </p>
+            }
+        </div>
+        <!-- //content -->
+    </div>
+</div>
+<!-- //register -->

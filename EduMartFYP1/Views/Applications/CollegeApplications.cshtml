@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EduMartFYP1.Application>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObtainedMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.College.CollegeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Decipline.DeciplineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quota.QuotaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalMarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObtainedMarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Percentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.College.CollegeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Decipline.DeciplineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quota.QuotaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FirstName)
+            </td>
+        </tr>
+    }
+
+</table>

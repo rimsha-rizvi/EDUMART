@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EduMartFYPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="CollegeID" Type="Int32" Nullable="false" />
+    <Property Name="DeciplineID" Type="Int32" Nullable="false" />
+    <Property Name="QuotaID" Type="Int32" Nullable="false" />
+    <Property Name="TotalMarks" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ObtainedMarks" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Percentage" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="College" Relationship="Self.FK_Application_College" FromRole="Application" ToRole="College" />
+    <NavigationProperty Name="Decipline" Relationship="Self.FK_Application_Decipline" FromRole="Application" ToRole="Decipline" />
+    <NavigationProperty Name="Quota" Relationship="Self.FK_Application_Quota" FromRole="Application" ToRole="Quota" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Application_Student" FromRole="Application" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Board">
+    <Key>
+      <PropertyRef Name="BoardID" />
+    </Key>
+    <Property Name="BoardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BoardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="College">
+    <Key>
+      <PropertyRef Name="CollegeID" />
+    </Key>
+    <Property Name="CollegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollegeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CollegeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CollegeContact" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CollegeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CollegePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK_Application_College" FromRole="College" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Decipline">
+    <Key>
+      <PropertyRef Name="DeciplineID" />
+    </Key>
+    <Property Name="DeciplineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeciplineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK_Application_Decipline" FromRole="Decipline" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Quota">
+    <Key>
+      <PropertyRef Name="QuotaID" />
+    </Key>
+    <Property Name="QuotaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuotaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK_Application_Quota" FromRole="Quota" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK_Application_Student" FromRole="Student" ToRole="Application" />
+  </EntityType>
+  <Association Name="FK_Application_College">
+    <End Role="College" Type="Self.College" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="College">
+        <PropertyRef Name="CollegeID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Decipline">
+    <End Role="Decipline" Type="Self.Decipline" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Decipline">
+        <PropertyRef Name="DeciplineID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="DeciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Quota">
+    <End Role="Quota" Type="Self.Quota" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quota">
+        <PropertyRef Name="QuotaID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="QuotaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EduMartEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Application" EntityType="Self.Application" />
+    <EntitySet Name="Board" EntityType="Self.Board" />
+    <EntitySet Name="College" EntityType="Self.College" />
+    <EntitySet Name="Decipline" EntityType="Self.Decipline" />
+    <EntitySet Name="Quota" EntityType="Self.Quota" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <AssociationSet Name="FK_Application_College" Association="Self.FK_Application_College">
+      <End Role="College" EntitySet="College" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Decipline" Association="Self.FK_Application_Decipline">
+      <End Role="Decipline" EntitySet="Decipline" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Quota" Association="Self.FK_Application_Quota">
+      <End Role="Quota" EntitySet="Quota" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Student" Association="Self.FK_Application_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <EntitySet Name="Admin" EntityType="EduMartFYPModel.Admin" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminusername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="adminpassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

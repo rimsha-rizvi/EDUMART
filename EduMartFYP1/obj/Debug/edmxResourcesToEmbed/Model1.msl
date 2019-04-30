@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EduMartFYPModelStoreContainer" CdmEntityContainer="EduMartEntities">
+    <EntitySetMapping Name="Application">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+          <ScalarProperty Name="DeciplineID" ColumnName="DeciplineID" />
+          <ScalarProperty Name="QuotaID" ColumnName="QuotaID" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="ObtainedMarks" ColumnName="ObtainedMarks" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Board">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Board">
+        <MappingFragment StoreEntitySet="Board">
+          <ScalarProperty Name="BoardID" ColumnName="BoardID" />
+          <ScalarProperty Name="BoardName" ColumnName="BoardName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="College">
+      <EntityTypeMapping TypeName="EduMartFYPModel.College">
+        <MappingFragment StoreEntitySet="College">
+          <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+          <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+          <ScalarProperty Name="CollegeAddress" ColumnName="CollegeAddress" />
+          <ScalarProperty Name="CollegeContact" ColumnName="CollegeContact" />
+          <ScalarProperty Name="CollegeEmail" ColumnName="CollegeEmail" />
+          <ScalarProperty Name="CollegePassword" ColumnName="CollegePassword" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Decipline">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Decipline">
+        <MappingFragment StoreEntitySet="Decipline">
+          <ScalarProperty Name="DeciplineID" ColumnName="DeciplineID" />
+          <ScalarProperty Name="DeciplineName" ColumnName="DeciplineName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quota">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Quota">
+        <MappingFragment StoreEntitySet="Quota">
+          <ScalarProperty Name="QuotaID" ColumnName="QuotaID" />
+          <ScalarProperty Name="QuotaName" ColumnName="QuotaName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DoB" ColumnName="DoB" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="EduMartFYPModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="adminpassword" ColumnName="adminpassword" />
+          <ScalarProperty Name="adminusername" ColumnName="adminusername" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

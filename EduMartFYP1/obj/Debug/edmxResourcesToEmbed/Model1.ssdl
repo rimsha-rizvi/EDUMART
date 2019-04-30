@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EduMartFYPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminusername" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adminpassword" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="ApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="CollegeID" Type="int" Nullable="false" />
+    <Property Name="DeciplineID" Type="int" Nullable="false" />
+    <Property Name="QuotaID" Type="int" Nullable="false" />
+    <Property Name="TotalMarks" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ObtainedMarks" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Percentage" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Board">
+    <Key>
+      <PropertyRef Name="BoardID" />
+    </Key>
+    <Property Name="BoardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BoardName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="College">
+    <Key>
+      <PropertyRef Name="CollegeID" />
+    </Key>
+    <Property Name="CollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollegeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CollegeAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CollegeContact" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CollegeEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CollegePassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Decipline">
+    <Key>
+      <PropertyRef Name="DeciplineID" />
+    </Key>
+    <Property Name="DeciplineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeciplineName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quota">
+    <Key>
+      <PropertyRef Name="QuotaID" />
+    </Key>
+    <Property Name="QuotaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuotaName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoB" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CNIC" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Application_College">
+    <End Role="College" Type="Self.College" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="College">
+        <PropertyRef Name="CollegeID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Decipline">
+    <End Role="Decipline" Type="Self.Decipline" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Decipline">
+        <PropertyRef Name="DeciplineID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="DeciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Quota">
+    <End Role="Quota" Type="Self.Quota" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quota">
+        <PropertyRef Name="QuotaID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="QuotaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EduMartFYPModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="College" EntityType="Self.College" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Decipline" EntityType="Self.Decipline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quota" EntityType="Self.Quota" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Application_College" Association="Self.FK_Application_College">
+      <End Role="College" EntitySet="College" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Decipline" Association="Self.FK_Application_Decipline">
+      <End Role="Decipline" EntitySet="Decipline" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Quota" Association="Self.FK_Application_Quota">
+      <End Role="Quota" EntitySet="Quota" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Student" Association="Self.FK_Application_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

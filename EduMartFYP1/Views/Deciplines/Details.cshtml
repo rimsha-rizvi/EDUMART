@@ -1,0 +1,26 @@
+﻿@model EduMartFYP1.Decipline
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Decipline</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeciplineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeciplineName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DeciplineID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
