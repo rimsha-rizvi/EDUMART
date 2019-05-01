@@ -15,7 +15,7 @@ namespace EduMartFYP1
     public partial class Application
     {
         public int ApplicationID { get; set; }
-        public int StudentID { get; set; }
+        public int StudenttID { get; set; }
         public int CollegeID { get; set; }
         public int DeciplineID { get; set; }
         public int QuotaID { get; set; }
